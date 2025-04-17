@@ -25,6 +25,7 @@ import { Message } from 'element-ui'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import _ from 'lodash'
+import moment from 'moment'
 // import axios from 'axios'
 // import { loginApi } from '@/api/login'
 export default {
@@ -35,7 +36,8 @@ export default {
       isSubmitting: false,
       isShowButton: false,
       messages: [],
-      user: null
+      user: null,
+      moment: moment().format('YYYY-MM-DD HH:mm:ss')
 
     }
   },
@@ -70,7 +72,7 @@ export default {
         const newMessage = {
           username: this.user.username,
           text: this.content,
-          createdAt: new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toISOString()
+          createdAt: this.moment
         }
 
         const response = await axios.post('https://67e68b326530dbd311106be9.mockapi.io/messages', newMessage)

@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import $, { error } from 'jquery'
+import $ from 'jquery'
 import { loginApi } from '@/api/login'
 import { registerApi, validUsername, vaildEmail, validatePassword } from '@/api/register'
 import { Message } from 'element-ui'
@@ -69,7 +69,6 @@ export default {
 
     async login () {
       if (!this.loginEmail || !this.loginPassword) {
-        console.log('输入不能为空')
         return Message.warning('输入不能为空')
       }
       try {
@@ -88,7 +87,6 @@ export default {
         }
       } catch {
         Message.error('邮箱或密码错误')
-        console.log('失败', error)
       }
     },
 
